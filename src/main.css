@@ -1,0 +1,11 @@
+.required-input {
+    color: red !important;
+}
+
+.toaster *{
+    font-family: 'Nunito', sans-serif;
+}
+
+.table td{
+    text-transform: uppercase;
+}
