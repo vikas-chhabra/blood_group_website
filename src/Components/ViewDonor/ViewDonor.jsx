@@ -27,7 +27,7 @@ export default class ViewDonor extends Component {
             <div className="container-fluid">
                 <Loader loader={this.state.loader} />
                 <h1 className="h3 mb-0 text-gray-800">Donor List</h1>
-                <table className=" ui celled table mt-3">
+                <table className="ui celled table mt-3">
                     <thead>
                         <tr>
                             <th>Donor Name</th>
@@ -38,6 +38,7 @@ export default class ViewDonor extends Component {
                             <th>Another Mobile No.</th>
                             <th>Address</th>
                             <th>Occupation</th>
+                            <th>Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,6 +53,10 @@ export default class ViewDonor extends Component {
                                     <td data-table="Another Mobile No.">{v.anotherMobile}</td>
                                     <td data-table="Address">{v.address}</td>
                                     <td data-table="Occupation">{v.occupation}</td>
+                                    <td data-table="Options">
+                                        <button className="btn btn-success"><i className="fas fa-pen"></i></button>
+                                        <button className="btn btn-danger"><i className="fas fa-trash-alt"></i></button>
+                                    </td>
                                 </tr>
 
                             );

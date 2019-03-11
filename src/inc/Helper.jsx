@@ -26,6 +26,20 @@ const Helper = (method, URL, data) => {
                 })
         )
     }
+    if (method === 'PUT') {
+        return (
+            fetch(`${BASEURL}${URL}`, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(res => {
+                    return res.json();
+                })
+        )
+    }
 }
 
 export default Helper;

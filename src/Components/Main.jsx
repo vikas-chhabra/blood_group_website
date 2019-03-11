@@ -11,6 +11,7 @@ import DashboardComponent from './Dashboard/Dashboard-component';
 import RegisteredUsers from './RegisteredUsers/RegisteredUsers';
 import AddBloodBank from './AddBloodBank/AddBloodBank';
 import ViewBloodBank from './ViewBloodBanks/ViewBloodBank';
+import EditBloodBank from './EditBloodBank/EditBloodBank';
 
 export default class Main extends Component {
     render() {
@@ -28,6 +29,7 @@ export default class Main extends Component {
                                 <Route path="/dashboard/registered-users" component={RegisteredUsers} />
                                 <Route path="/dashboard/add-blood-bank" component={AddBloodBank} />
                                 <Route path="/dashboard/blood-banks" component={ViewBloodBank} />
+                                <Route path="/dashboard/edit-blood-bank/:id" component={EditBloodBank} />
                                 <Route path="/dashboard/components" component={DashboardComponent} />
                             </Switch>
                         </div>

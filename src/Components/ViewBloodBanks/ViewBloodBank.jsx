@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Loader from '../../inc/Loader';
 import Helper from '../../inc/Helper';
+import { Link } from 'react-router-dom';
 
 export default class ViewBloodBank extends Component {
-
 
     state = {
         bloodBanks: [],
@@ -23,10 +23,6 @@ export default class ViewBloodBank extends Component {
             })
     }
 
-    // componentDidMount() {
-    //     this.toggleLoader();
-    // }
-
     render() {
         return (
             <div className="container-fluid">
@@ -41,6 +37,7 @@ export default class ViewBloodBank extends Component {
                             <th>State</th>
                             <th>Address</th>
                             <th>No. of Donors</th>
+                            <th>Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,6 +51,10 @@ export default class ViewBloodBank extends Component {
                                         <td data-table="State">{v.state}</td>
                                         <td data-table="Address">{v.address}</td>
                                         <td data-table="No. of Donors">{v.noOfDonors}</td>
+                                        <td data-table="Options">
+                                            <Link to={"/dashboard/edit-blood-bank/"+v._id} className="btn btn-success"><i className="fas fa-pen"></i></Link>
+                                            <button className="btn btn-danger ml-1"><i className="fas fa-trash-alt"></i></button>
+                                        </td>
                                     </tr>
 
                                 );
