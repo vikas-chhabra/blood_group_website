@@ -40,6 +40,19 @@ const Helper = (method, URL, data) => {
                 })
         )
     }
+    if (method === 'DELETE') {
+        return (
+            fetch(`${BASEURL}${URL}`, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            })
+                .then(res => {
+                    return res.json();
+                })
+        )
+    }
 }
 
 export default Helper;

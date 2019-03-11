@@ -5,6 +5,9 @@ import Helper from '../../inc/Helper';
 
 var formValues = {};
 export default class AddDonor extends Component {
+    state = {
+        states: []
+    }
 
     addDonor = e => {
         e.preventDefault();
@@ -28,7 +31,18 @@ export default class AddDonor extends Component {
             })
     }
 
-    getData = e => formValues[e.target.name] = e.target.value;
+    getData = e => {
+        formValues[e.target.name] = e.target.value
+        if (e.target.name === 'country') {
+            countries.forEach(v => {
+                if (v.country === e.target.value) {
+                    this.setState({
+                        states: v.states
+                    })
+                }
+            })
+        }
+    }
 
     render() {
         return (
@@ -106,22 +120,37 @@ export default class AddDonor extends Component {
                                 {
                                     countries.map(v => {
                                         return (
-                                            <option value={v.name}>{v.name}</option>
+                                            <option value={v.country}>{v.country}</option>
                                         )
                                     })
                                 }
                             </select>
                         </div>
                         <div className="form-group col-md-6">
-                            <label>Any type of disease</label>
-                            <input type="text" name="disease" className="form-control" placeholder="Enter Disease Here" onBlur={e => this.getData(e)} />
+                            <label>State<span className="required-input">*</span></label>
+                            <select className="form-control" name="state" onBlur={e => this.getData(e)} required>
+                                <option value="">Please Select</option>
+                                {
+                                    this.state.states.map(v => {
+                                        return (
+                                            <option key={v} value={v}>{v}</option>
+                                        )
+                                    })
+                                }
+                            </select>
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
+                            <label>Any type of disease</label>
+                            <input type="text" name="disease" className="form-control" placeholder="Enter Disease Here" onBlur={e => this.getData(e)} />
+                        </div>
+                        <div className="form-group col-md-6">
                             <label>Previous date of donated blood</label>
                             <input type="date" name="lastTimeDonate" className="form-control" onChange={e => this.getData(e)} />
                         </div>
+                    </div>
+                    <div className="form-row">
                         <div className="form-group col-md-6">
                             <label>Address</label>
                             <textarea name="address" className="form-control" cols="4" rows="3" onBlur={e => this.getData(e)}></textarea>
