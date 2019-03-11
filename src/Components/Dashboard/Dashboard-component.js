@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Illustrations from '../../images/img/undraw_posting_photo.svg';
 
-export default class Dashboard extends Component {
+export default class DashboardComponent extends Component {
     render() {
         return (
             <div className="container-fluid">

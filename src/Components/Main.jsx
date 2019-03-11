@@ -4,10 +4,13 @@ import SideBar from '../inc/SideBar';
 import TopBar from '../inc/TopBar';
 import Footer from '../inc/Footer';
 import Dashboard from './Dashboard/Dashboard';
-// import Menu from './Menu/Menu';
 import { PageUp } from '../inc/PageUp';
 import AddDonor from './AddDonor/AddDonor';
 import ViewDonor from './ViewDonor/ViewDonor';
+import DashboardComponent from './Dashboard/Dashboard-component';
+import RegisteredUsers from './RegisteredUsers/RegisteredUsers';
+import AddBloodBank from './AddBloodBank/AddBloodBank';
+import ViewBloodBank from './ViewBloodBanks/ViewBloodBank';
 
 export default class Main extends Component {
     render() {
@@ -22,6 +25,10 @@ export default class Main extends Component {
                                 <Route exact path="/dashboard" component={Dashboard} />
                                 <Route path="/dashboard/add-donor" component={AddDonor} />
                                 <Route path="/dashboard/view-donors" component={ViewDonor} />
+                                <Route path="/dashboard/registered-users" component={RegisteredUsers} />
+                                <Route path="/dashboard/add-blood-bank" component={AddBloodBank} />
+                                <Route path="/dashboard/blood-banks" component={ViewBloodBank} />
+                                <Route path="/dashboard/components" component={DashboardComponent} />
                             </Switch>
                         </div>
                         <Footer />

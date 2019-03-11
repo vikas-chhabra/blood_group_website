@@ -1,31 +1,26 @@
 import React, { Component } from 'react';
 import { ToastContainer, toast } from 'mdbreact';
+import { countries } from '../../inc/Countries';
+import Helper from '../../inc/Helper';
 
 var formValues = {};
 export default class AddDonor extends Component {
 
     addDonor = e => {
         e.preventDefault();
-        fetch(`https://bg-test-api.herokuapp.com/api/donors`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formValues)
-        }).then(res => {
-            return res.json()
-        }).then(res => {
-            if (res.success) {
-                toast.success(res.msg, {
-                    position: "top-right",
-                });
-            }
-            else {
-                toast.warn(res.msg, {
-                    position: "top-right",
-                });
-            }
-        })
+        Helper('POST', '/donors', formValues)
+            .then(res => {
+                if (res.success) {
+                    toast.success(res.msg, {
+                        position: "top-right",
+                    });
+                }
+                else {
+                    toast.warn(res.msg, {
+                        position: "top-right",
+                    });
+                }
+            })
             .catch(error => {
                 toast.warn(error, {
                     position: "top-right",
@@ -33,9 +28,7 @@ export default class AddDonor extends Component {
             })
     }
 
-    getData = e => {
-        formValues[e.target.name] = e.target.value;
-    }
+    getData = e => formValues[e.target.name] = e.target.value;
 
     render() {
         return (
@@ -47,7 +40,9 @@ export default class AddDonor extends Component {
                     autoClose={5000}
                 />
                 <div className="row">
-                    <h1 className="pl-3">Add Donor</h1>
+                    <div className="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 className="h3 mb-0 text-gray-800">Add Donor</h1>
+                    </div>
                 </div>
                 <div className="row">
                     <h6 className="pl-3"><span className="required-input">*</span> fields are mandetory</h6>
@@ -105,8 +100,27 @@ export default class AddDonor extends Component {
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
+                            <label>Country <span className="required-input">*</span></label>
+                            <select className="form-control" name="country" onBlur={e => this.getData(e)} required>
+                                <option value="">Please Select</option>
+                                {
+                                    countries.map(v => {
+                                        return (
+                                            <option value={v.name}>{v.name}</option>
+                                        )
+                                    })
+                                }
+                            </select>
+                        </div>
+                        <div className="form-group col-md-6">
                             <label>Any type of disease</label>
                             <input type="text" name="disease" className="form-control" placeholder="Enter Disease Here" onBlur={e => this.getData(e)} />
+                        </div>
+                    </div>
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <label>Previous date of donated blood</label>
+                            <input type="date" name="lastTimeDonate" className="form-control" onChange={e => this.getData(e)} />
                         </div>
                         <div className="form-group col-md-6">
                             <label>Address</label>

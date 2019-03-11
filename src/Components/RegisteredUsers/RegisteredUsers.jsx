@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class Menu extends Component {
+export default class RegisteredUsers extends Component {
   render() {
     return (
       <div>
-        hello menu valla paddingLeft: ,
+        Registred Users
       </div>
     )
   }

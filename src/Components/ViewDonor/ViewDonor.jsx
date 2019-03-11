@@ -1,30 +1,33 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Loader from '../../inc/Loader';
+import Helper from '../../inc/Helper';
 
 export default class ViewDonor extends Component {
 
     state = {
-        donors: []
+        donors: [],
+        loader: false
     }
 
+    toggleLoader = _ => this.setState({ loader: !this.state.loader })
+
     componentWillMount() {
-        fetch(`https://bg-test-api.herokuapp.com/api/donors`)
-            .then(res => {
-                return res.json();
-            })
-            .then(res => {
+        this.toggleLoader();
+        Helper('GET', '/donors')
+            .then(donors => {
                 this.setState({
-                    donors: res.donors
-                })
-            })
-            .catch(error => {
-                console.log(error)
-            })
+                    donors: donors.donors
+                });
+                this.toggleLoader();
+            });
     }
 
     render() {
         return (
             <div className="container-fluid">
-                <table className="table">
+                <Loader loader={this.state.loader} />
+                <h1 className="h3 mb-0 text-gray-800">Donor List</h1>
+                <table className=" ui celled table mt-3">
                     <thead>
                         <tr>
                             <th>Donor Name</th>
@@ -41,14 +44,14 @@ export default class ViewDonor extends Component {
                         {this.state.donors.map(v => {
                             return (
                                 <tr key={v._id}>
-                                    <td>{v.donorName}</td>
-                                    <td>{v.bloodGroup}</td>
-                                    <td>{v.dob}</td>
-                                    <td>{v.gender}</td>
-                                    <td>{v.mobile}</td>
-                                    <td>{v.anotherMobile}</td>
-                                    <td>{v.address}</td>
-                                    <td>{v.occupation}</td>
+                                    <td data-table="Donor Name">{v.donorName}</td>
+                                    <td data-table="Blood Group">{v.bloodGroup}</td>
+                                    <td data-table="DOB">{v.dob}</td>
+                                    <td data-table="Gender">{v.gender}</td>
+                                    <td data-table="Mobile No.">{v.mobile}</td>
+                                    <td data-table="Another Mobile No.">{v.anotherMobile}</td>
+                                    <td data-table="Address">{v.address}</td>
+                                    <td data-table="Occupation">{v.occupation}</td>
                                 </tr>
 
                             );

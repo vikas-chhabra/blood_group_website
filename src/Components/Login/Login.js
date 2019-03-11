@@ -1,16 +1,75 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import $ from 'jquery';
 
 export default class Login extends Component {
+
+    componentDidMount() {
+        $(document).ready(function () {
+
+            $('.pour') //Pour Me Another Drink, Bartender!
+                .delay(0)
+                .animate({
+                    height: '150px'
+                }, 1500)
+                .delay(15600);
+
+            $('.pourTube') //Pour Me Another Drink, Bartender!
+                .delay(0)
+                .animate({
+                    height: '150px'
+                }, 0)
+                .delay(15600);
+
+            $('#liquid') // I Said Fill 'Er Up!
+                .delay(1300)
+                .animate({
+                    height: '170px'
+                }, 15000);
+
+            $('.beer-foam') // Keep that Foam Rollin' Toward the Top! Yahooo!
+                .delay(3400)
+                .animate({
+                    bottom: '200px'
+                }, 2500);
+        });
+    }
+
     render() {
         return (
-            <div className="bg-gradient-primary">
+            <div className="bg-gradient-primary" style={{ height: "100vh" }}>
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-xl-10 col-lg-12 col-md-9">
                             <div className="card o-hidden border-0 shadow-lg my-5">
                                 <div className="card-body p-0">
                                     <div className="row">
-                                        <div className="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                                        <div className="col-lg-6 d-flex justify-content-center align-items-center py-5">
+                                            <div id="containerBlood">
+                                                <div className="pour"></div>
+                                                <div className="pourTube"></div>
+                                                <div id="beaker">
+                                                    <div className="beer-foam">
+
+                                                    </div>
+                                                    <div id="plastic">
+
+                                                    </div>
+
+                                                    <div className="drop firstDrop"></div>
+                                                    <div className="drop secondDrop"></div>
+                                                    <div className="drop thirdDrop"></div>
+
+
+                                                    <div id="liquid">
+                                                        <div className="bubble bubble1"></div>
+                                                        <div className="bubble bubble2"></div>
+                                                        <div className="bubble bubble3"></div>
+                                                        <div className="bubble bubble4"></div>
+                                                        <div className="bubble bubble5"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div className="col-lg-6">
                                             <div className="p-5">
                                                 <div className="text-center">
@@ -23,26 +82,9 @@ export default class Login extends Component {
                                                     <div className="form-group">
                                                         <input type="password" className="form-control form-control-user" id="exampleInputPassword" placeholder="Password" />
                                                     </div>
-                                                    <div className="form-group">
-                                                        <div className="custom-control custom-checkbox small">
-                                                            <input type="checkbox" className="custom-control-input" id="customCheck" />
-                                                            <label className="custom-control-label" htmlFor="customCheck">Remember Me</label>
-                                                        </div>
-                                                    </div>
-                                                    <a href="index.html" className="btn btn-primary btn-user btn-block">Login</a>
+                                                    <input type="submit" className="btn btn-primary btn-user btn-block" value="Login" />
                                                     <hr />
-                                                    <a href="index.html" className="btn btn-google btn-user btn-block">
-                                                        <i className="fab fa-google fa-fw"></i> Login with Google</a>
-                                                    <a href="index.html" className="btn btn-facebook btn-user btn-block">
-                                                        <i className="fab fa-facebook-f fa-fw"></i> Login with Facebook</a>
                                                 </form>
-                                                <hr />
-                                                <div className="text-center">
-                                                    <a className="small" href="forgot-password.html">Forgot Password?</a>
-                                                </div>
-                                                <div className="text-center">
-                                                    <a className="small" href="register.html">Create an Account!</a>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
