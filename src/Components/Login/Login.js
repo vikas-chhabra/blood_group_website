@@ -1,7 +1,32 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import Helper from '../../inc/Helper';
+import { ToastContainer, toast } from 'mdbreact';
 
+var loginData = {};
 export default class Login extends Component {
+
+
+    loginHit = e => {
+        e.preventDefault();
+        Helper('POST', '/users/login', loginData)
+            .then(res => {
+                console.log(res);
+                if (res.success) {
+                    this.props.history.push('/dashboard');
+                }
+                else {
+                    toast.error(res.msg, {
+                        position: "top-right",
+                    });
+
+                }
+            })
+    }
+
+    getData = e => {
+        loginData[e.target.name] = e.target.value;
+    }
 
     componentDidMount() {
         $(document).ready(function () {
@@ -37,6 +62,12 @@ export default class Login extends Component {
     render() {
         return (
             <div className="bg-gradient-primary" style={{ height: "100vh" }}>
+                <ToastContainer
+                    className="toaster"
+                    hideProgressBar={true}
+                    newestOnTop={true}
+                    autoClose={5000}
+                />
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-xl-10 col-lg-12 col-md-9">
@@ -70,17 +101,17 @@ export default class Login extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-lg-6">
-                                            <div className="p-5">
+                                        <div className="col-lg-6 d-flex align-items-center justify-content-center">
+                                            <div className="w-100 p-5">
                                                 <div className="text-center">
                                                     <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                                 </div>
-                                                <form className="user">
+                                                <form className="user" onSubmit={e => this.loginHit(e)}>
                                                     <div className="form-group">
-                                                        <input type="email" className="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
+                                                        <input type="email" className="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" name="email" placeholder="Enter Email Address..." onChange={e => this.getData(e)} required />
                                                     </div>
                                                     <div className="form-group">
-                                                        <input type="password" className="form-control form-control-user" id="exampleInputPassword" placeholder="Password" />
+                                                        <input type="password" className="form-control form-control-user" id="exampleInputPassword" name="password" placeholder="Password" onChange={e => this.getData(e)} required />
                                                     </div>
                                                     <input type="submit" className="btn btn-primary btn-user btn-block" value="Login" />
                                                     <hr />

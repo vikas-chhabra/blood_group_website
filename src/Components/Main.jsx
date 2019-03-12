@@ -7,7 +7,6 @@ import Dashboard from './Dashboard/Dashboard';
 import { PageUp } from '../inc/PageUp';
 import AddDonor from './AddDonor/AddDonor';
 import ViewDonor from './ViewDonor/ViewDonor';
-import DashboardComponent from './Dashboard/Dashboard-component';
 import RegisteredUsers from './RegisteredUsers/RegisteredUsers';
 import AddBloodBank from './AddBloodBank/AddBloodBank';
 import ViewBloodBank from './ViewBloodBanks/ViewBloodBank';
@@ -32,7 +31,7 @@ export default class Main extends Component {
                                 <Route path="/dashboard/add-blood-bank" component={AddBloodBank} />
                                 <Route path="/dashboard/blood-banks" component={ViewBloodBank} />
                                 <Route path="/dashboard/edit-blood-bank/:id" component={EditBloodBank} />
-                                <Route path="/dashboard/components" component={DashboardComponent} />
+                                {/* <Route path="/dashboard/components" component={DashboardComponent} /> */}
                             </Switch>
                         </div>
                         <Footer />

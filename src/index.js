@@ -5,12 +5,14 @@ import * as serviceWorker from './serviceWorker';
 import Login from './Components/Login/Login';
 import Main from './Components/Main';
 import './main.css';
+import RegisterDonor from './RegisterDonor/RegisterDonor';
 
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
-            <Route path="/dashboard" component ={Main} />
+            <Route exact path="/" component ={RegisterDonor} />
             <Route exact path="/login" component={Login} />
+            <Route path="/dashboard" component ={Main} />
         </Switch>
     </BrowserRouter>
 , document.getElementById('root'));
