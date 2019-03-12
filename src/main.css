@@ -218,6 +218,7 @@
 .table tr {
     color: #5a5c69 !important;
     font-family: 'Nunito', sans-serif;
+    font-size: 14px;
 }
 
 .toaster * {
@@ -225,6 +226,7 @@
 }
 
 .table td {
+    font-size: 14px;
     text-transform: uppercase;
 }
 

@@ -13,7 +13,7 @@ export default class SideBar extends Component {
                     <div className="sidebar-brand-icon rotate-n-15">
                         <i className="fas fa-laugh-wink"></i>
                     </div>
-                    <div className="sidebar-brand-text mx-3">SB Admin <sup />2</div>
+                    <div className="sidebar-brand-text mx-3">Blood Donate</div>
                 </Link>
                 <hr className="sidebar-divider my-0" />
                 <li className="nav-item active">
