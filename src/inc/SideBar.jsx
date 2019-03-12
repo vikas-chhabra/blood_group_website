@@ -62,7 +62,7 @@ export default class SideBar extends Component {
                 <li className="nav-item">
                     <Link className="nav-link" to="/dashboard/registered-users" >
                         <i className="fas fa-user"></i>
-                        <span>Registered Users</span>
+                        <span>Registered Admins</span>
                     </Link>
                 </li>
                 <hr className="sidebar-divider d-none d-md-block" />

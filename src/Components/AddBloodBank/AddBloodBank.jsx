@@ -15,7 +15,6 @@ export default class AddBloodBank extends Component {
         e.preventDefault();
         Helper('POST', '/bloodBanks', formValues)
             .then(res => {
-                console.log(res);
                 if (res.success) {
                     toast.success(res.msg, {
                         position: "top-right",

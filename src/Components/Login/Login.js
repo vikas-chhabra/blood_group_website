@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import Helper from '../../inc/Helper';
+import cookie from 'react-cookies';
 import { ToastContainer, toast } from 'mdbreact';
+import Loader from '../../inc/Loader';
 
 var loginData = {};
 export default class Login extends Component {
+    state = {
+        loader: false
+    }
 
+    toggleLoader = _ => this.setState({ loader: !this.state.loader })
 
     loginHit = e => {
+        this.toggleLoader();
         e.preventDefault();
         Helper('POST', '/users/login', loginData)
             .then(res => {
-                console.log(res);
                 if (res.success) {
+                    this.toggleLoader();
+                    cookie.save('email', loginData.email);
+                    cookie.save('token', res.token)
                     this.props.history.push('/dashboard');
                 }
                 else {
                     toast.error(res.msg, {
                         position: "top-right",
                     });
+                    this.toggleLoader();
 
                 }
             })
@@ -62,6 +72,7 @@ export default class Login extends Component {
     render() {
         return (
             <div className="bg-gradient-primary" style={{ height: "100vh" }}>
+                <Loader loader={this.state.loader} />
                 <ToastContainer
                     className="toaster"
                     hideProgressBar={true}

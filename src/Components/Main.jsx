@@ -12,8 +12,20 @@ import AddBloodBank from './AddBloodBank/AddBloodBank';
 import ViewBloodBank from './ViewBloodBanks/ViewBloodBank';
 import EditBloodBank from './EditBloodBank/EditBloodBank';
 import EditDonor from './EditDonor/EditDonor';
+import cookie from 'react-cookies';
+import SearchState from './SearchState/SearchState';
+import RegisterAdmin from './RegisterAdmin/RegisterAdmin';
+import FilterBloodType from './FilterBloodType/FilterBloodType';
 
 export default class Main extends Component {
+
+    constructor(props) {
+        super(props);
+        if (!cookie.load('token') || !cookie.load('email')) {
+            this.props.history.push('/login')
+        }
+    }
+
     render() {
         return (
             <>
@@ -21,7 +33,8 @@ export default class Main extends Component {
                     <SideBar />
                     <div id="content-wrapper" className="d-flex flex-column">
                         <div id="content">
-                            <TopBar />
+                            <TopBar history={this.props.history} />
+                            {/* <BrowserRouter> */}
                             <Switch>
                                 <Route exact path="/dashboard" component={Dashboard} />
                                 <Route path="/dashboard/add-donor" component={AddDonor} />
@@ -30,9 +43,13 @@ export default class Main extends Component {
                                 <Route path="/dashboard/registered-users" component={RegisteredUsers} />
                                 <Route path="/dashboard/add-blood-bank" component={AddBloodBank} />
                                 <Route path="/dashboard/blood-banks" component={ViewBloodBank} />
+                                <Route path="/dashboard/register-admin" component={RegisterAdmin} />
+                                <Route path="/dashboard/search/:searchTitle" component={SearchState} />
                                 <Route path="/dashboard/edit-blood-bank/:id" component={EditBloodBank} />
+                                <Route path="/dashboard/filter-blood-type/:bloodType" component={FilterBloodType} />
                                 {/* <Route path="/dashboard/components" component={DashboardComponent} /> */}
                             </Switch>
+                            {/* </BrowserRouter> */}
                         </div>
                         <Footer />
                     </div>

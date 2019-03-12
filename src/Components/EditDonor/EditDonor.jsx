@@ -57,11 +57,11 @@ export default class EditDonor extends Component {
         e.preventDefault();
         Helper('PUT', `/donors/${this.props.match.params.id}`, formValues)
             .then(res => {
-                console.log(res);
                 if (res.success) {
                     toast.success(res.msg, {
                         position: "top-right",
                     });
+                    this.context.histroy.push('/dashboard/view-donors');
                 }
                 else {
                     toast.warn(res.msg, {
