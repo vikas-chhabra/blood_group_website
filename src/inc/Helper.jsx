@@ -1,4 +1,4 @@
-let BASEURL = `https://bg-test-api.herokuapp.com/api`;
+let BASEURL = `https://bloodbankapi.herokuapp.com/api`;
 
 const Helper = (method, URL, data) => {
     if (method === 'GET') {

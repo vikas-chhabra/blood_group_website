@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Loader from '../../inc/Loader';
 import Helper from '../../inc/Helper';
 import { Link } from 'react-router-dom';
-import { toast } from 'mdbreact';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default class ViewBloodBank extends Component {
 

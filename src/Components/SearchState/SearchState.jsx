@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Helper from '../../inc/Helper';
 import Loader from '../../inc/Loader';
-import { ToastContainer, toast } from 'mdbreact';
+import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 export default class SearchState extends Component {
 

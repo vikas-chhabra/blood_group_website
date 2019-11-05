@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'mdbreact';
+import { ToastContainer, toast } from 'react-toastify';
 import Loader from '../../inc/Loader'
 import Helper from '../../inc/Helper';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Loader from '../../inc/Loader';
 import Helper from '../../inc/Helper';
-import { ToastContainer, toast } from 'mdbreact';
+import { ToastContainer, toast } from 'react-toastify';
 import { countries } from '../../inc/Countries';
 
 var formValues = {};

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ToastContainer, toast } from 'mdbreact';
+import { ToastContainer, toast } from 'react-toastify';
 import { countries } from '../../inc/Countries';
 import Helper from '../../inc/Helper';
 

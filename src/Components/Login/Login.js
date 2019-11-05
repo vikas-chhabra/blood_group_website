@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import Helper from '../../inc/Helper';
 import cookie from 'react-cookies';
-import { ToastContainer, toast } from 'mdbreact';
+import { toast, ToastContainer } from 'react-toastify';
 import Loader from '../../inc/Loader';
+import 'react-toastify/dist/ReactToastify.css';
 
 var loginData = {};
 export default class Login extends Component {
@@ -25,9 +26,7 @@ export default class Login extends Component {
                     this.props.history.push('/dashboard');
                 }
                 else {
-                    toast.error(res.msg, {
-                        position: "top-right",
-                    });
+                    toast.error(res.msg);
                     this.toggleLoader();
 
                 }
@@ -73,12 +72,7 @@ export default class Login extends Component {
         return (
             <div className="bg-gradient-primary" style={{ height: "100vh" }}>
                 <Loader loader={this.state.loader} />
-                <ToastContainer
-                    className="toaster"
-                    hideProgressBar={true}
-                    newestOnTop={true}
-                    autoClose={5000}
-                />
+                <ToastContainer/>
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-xl-10 col-lg-12 col-md-9">
