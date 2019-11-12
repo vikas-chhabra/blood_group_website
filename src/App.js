@@ -8,8 +8,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/" component={Main}/>
+          <Route path={`${process.env.PUBLIC_URL}/login`} component={Login} />
+          <Route path={`${process.env.PUBLIC_URL}/`} component={Main}/>
         </Switch>
       </BrowserRouter>
     );

@@ -36,17 +36,17 @@ export default class Main extends Component {
                             <TopBar history={this.props.history} />
                             {/* <BrowserRouter> */}
                             <Switch>
-                                <Route exact path="/dashboard" component={Dashboard} />
-                                <Route path="/dashboard/add-donor" component={AddDonor} />
-                                <Route path="/dashboard/view-donors" component={ViewDonor} />
-                                <Route path="/dashboard/edit-donor/:id" component={EditDonor} />
-                                <Route path="/dashboard/registered-users" component={RegisteredUsers} />
-                                <Route path="/dashboard/add-blood-bank" component={AddBloodBank} />
-                                <Route path="/dashboard/blood-banks" component={ViewBloodBank} />
-                                <Route path="/dashboard/register-admin" component={RegisterAdmin} />
-                                <Route path="/dashboard/search/:searchTitle" component={SearchState} />
-                                <Route path="/dashboard/edit-blood-bank/:id" component={EditBloodBank} />
-                                <Route path="/dashboard/filter-blood-type/:bloodType" component={FilterBloodType} />
+                                <Route exact path={`${process.env.PUBLIC_URL}/dashboard`} component={Dashboard} />
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard/add-donor`} component={AddDonor} />
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard/view-donors`} component={ViewDonor} />
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard/edit-donor/:id`} component={EditDonor} />
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard/registered-users`} component={RegisteredUsers} />
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard/add-blood-bank`} component={AddBloodBank} />
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard/blood-banks`} component={ViewBloodBank} />
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard/register-admin`} component={RegisterAdmin} />
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard/search/:searchTitle`} component={SearchState} />
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard/edit-blood-bank/:id`} component={EditBloodBank} />
+                                <Route path={`${process.env.PUBLIC_URL}/dashboard/filter-blood-type/:bloodType`} component={FilterBloodType} />
                                 {/* <Route path="/dashboard/components" component={DashboardComponent} /> */}
                             </Switch>
                             {/* </BrowserRouter> */}
