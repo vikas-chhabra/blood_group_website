@@ -20,7 +20,27 @@ export default class FilterBloodType extends Component {
     state = {
         donors: []
     }
-
+    deleteDonor = id => {
+        this.toggleLoader();
+        Helper('DELETE', `/donors/${id}`)
+            .then(res => {
+                if (res.success) {
+                    Helper('GET', '/donors')
+                        .then(donors => {
+                            this.setState({
+                                donors: donors.donors
+                            });
+                            this.toggleLoader();
+                        });
+                }
+                else {
+                    this.toggleLoader();
+                    toast.success(res.msg, {
+                        position: "top-right",
+                    });
+                }
+            })
+    }
     toggleLoader = _ => this.setState({ loader: !this.state.loader })
 
 

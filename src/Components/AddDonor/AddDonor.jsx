@@ -2,15 +2,22 @@ import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { countries } from '../../inc/Countries';
 import Helper from '../../inc/Helper';
+import Loader from '../../inc/Loader';
 
 var formValues = {};
 export default class AddDonor extends Component {
     state = {
-        states: []
+        states: [],
+        loading: false
+    }
+
+    toggleLoader=()=>{
+        this.setState({loader: !this.state.loader})
     }
 
     addDonor = e => {
         e.preventDefault();
+        this.toggleLoader()
         Helper('POST', '/donors', formValues)
             .then(res => {
                 if (res.success) {
@@ -28,6 +35,9 @@ export default class AddDonor extends Component {
                 toast.warn(error, {
                     position: "top-right",
                 });
+            })
+            .finally(_=>{
+                this.toggleLoader()
             })
     }
 
@@ -160,6 +170,7 @@ export default class AddDonor extends Component {
                         <input type="submit" className="btn btn-primary" value="Submit" />
                     </div>
                 </form>
+                <Loader loader={this.state.loader} />
             </div>
         )
     }
